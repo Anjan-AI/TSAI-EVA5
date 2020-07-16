@@ -2,9 +2,9 @@
 
 ### 1. What are Channels and Kernels (according to EVA)? ###
 ***ANS :***
-**Kernal** are the matrix of odd no size (usually 3X3) whcih is convolved with the image to extract certain features. 
-<br/>The values of the kernal and the symetry is responsible for a particular type of feature. 
-for exalple the below 3X3 keranl can be used to produce a hroizontal edge.
+**Kernel** are the matrix of odd no size (usually 3X3) which is convolved with the image to extract certain features. 
+<br/>The values of the kernel and the symmetry is responsible for a particular type of feature. 
+for example the below 3X3 kernel can be used to produce a horizontal edge.
 
 |-1|-1 |-1|
 |:---:|:---:|:---:|
@@ -12,27 +12,28 @@ for exalple the below 3X3 keranl can be used to produce a hroizontal edge.
 | 1 | 1 |1 |
 
 __**Channels :**__
-<br/> Channels are the outcome of images convloved with a definite kernal. each Channel consist diffnenrt features. for example in the below Image we can see that it is a Image with differnt Alphabetes present in it.
+<br/> Channels are the outcome of images convolved with a definite kernel. each Channel consist different features. for example, in the below Image we can see that it is a Image with different Alphabets present in it.
+<br/>The values of the kernel and the symmetry is responsible for a particular type of feature. 
+for example, the below 3X3 kernel can be used to produce a horizontal edge.
 <p align ="center">
   <img widht= 200, height = 200 src="Resources/Alphabet.PNG">			  
 </p>
 
-now in this we can consider each alphabet as a feaure. so each alphabet information can be stored in one channel. hence this image can be represnted in 52 channels each represeting a feature of small and captial letter in it. 
-
+now in this image we can consider each alphabet as a feature. So each alphabet information can be stored in one channel. hence this image can be represented in 52 channels each representing a feature of small and capital letter in it.
 
 ### 2. Why should we (nearly) always use 3x3 kernels? ###
 ***ANS :*** 
-below are the resons for mostly using 3X3 kernal
-1. Using a odd size kernal makes the kernal symetric. 
-2. To get a receptive filed of 5X5 we can have one stage covlution with 5X5 kernal. 
-<br/>to get the same receptive filed with 3X3 kernal we need to do 2 stages of convution.
+below are the reasons for mostly using 3X3 kernel
+1. Using an odd size kernel makes the kernel symmetric. 
+2. To get a receptive filed of 5X5 we can have one stage convolution with 5X5 kernel. 
+<br/>to get the same receptive filed with 3X3 kernel we need to do 2 stages of convolution.
 <br/> Image(5X5) -> Convolved with 5X5 -> 1X1
 <br/> Image(5X5) -->Convolved with 3X3 --> 3X3 ->convolved with 3X3 -> 1X1
 <p align ="center">
   <img  src="Resources/Kernel.PNG">			  
 </p>
 
-3. In recent time there are hardwares which are accelared for 3X3 kernal oerations. 
+3. In recent time there are hardware’s which are accelerated for 3X3 kernel operations. 
 
 
 ### 3. How many times to we need to perform 3x3 convolutions operations to reach close to 1x1 from 199x199 (type each layer output like 199x199 > 197x197...) ###
