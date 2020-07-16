@@ -44,14 +44,3 @@ below are the reasons for mostly using 3X3 kernel
 
 ### 4. How are kernels initialized? ###
 ***ANS :*** 
-<center>
-
- Centered text
- ------------
-</center>
-
- Example text
- ============
-
-Centered text
-============
