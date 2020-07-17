@@ -4,8 +4,7 @@
 ***ANS :***
 **Kernel** are the matrix of odd no size (usually 3X3) which is convolved with the image to extract certain features. 
 <br/>The values of the kernel and the symmetry is responsible for a particular type of feature. 
-for example the below 3X3 kernel can be used to produce a horizontal edge.
-
+for example, the below 3X3 kernel can be used to produce a horizontal edge.
 |-1|-1 |-1|
 |:---:|:---:|:---:|
 | 0 |0 |0 |
@@ -13,8 +12,6 @@ for example the below 3X3 kernel can be used to produce a horizontal edge.
 
 __**Channels :**__
 <br/> Channels are the outcome of images convolved with a definite kernel. each Channel consist different features. for example, in the below Image we can see that it is a Image with different Alphabets present in it.
-<br/>The values of the kernel and the symmetry is responsible for a particular type of feature. 
-for example, the below 3X3 kernel can be used to produce a horizontal edge.
 <p align ="center">
   <img widht= 200, height = 200 src="Resources/Alphabet.PNG">			  
 </p>
