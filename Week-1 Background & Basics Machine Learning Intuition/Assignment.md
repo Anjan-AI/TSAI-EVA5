@@ -30,7 +30,7 @@ below are the reasons for mostly using 3X3 kernel
 <br/> Image(5X5) -> Convolved with 5X5 -> 1X1
 <br/> Image(5X5) -->Convolved with 3X3 --> 3X3 ->convolved with 3X3 -> 1X1
 <p align ="center">
-  <img  src="Resources/Kernel.PNG">			  
+  <img  src="Resources/Kernel.png">			  
 </p>
 
 3. In recent time there are hardware’s which are accelerated for 3X3 kernel operations. 
