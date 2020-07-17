@@ -50,7 +50,7 @@ During training, back propagation is used to train the weights, from output towa
 
 Weights (in any layer ) are increased or decreased by looking into the gradient of the succeeding layer by the optimizer. 
 
-This change is proportional to the learning rate (we set) and also the position of the layer from the output layer/ gradient of the previous layer.
+This change is proportional to the learning rate (we set) and also the position of the layer from the output layer(ie. gradient of the previous layer).
 
 <p align ="center">
   <img widht= 400, height = 400 src="Resources/errorback.png">			  
