@@ -9,9 +9,10 @@ for example, the below 3X3 kernel can be used to produce a horizontal edge.
 |:---:|:---:|:---:|
 | 0 |0 |0 |
 | 1 | 1 |1 |
+
 <br/> Output of the convolution of an image with a kernal is a channel, containing only a specific feature. As it extracts features,
-on that pretext its also called a feature extractor. Feature to be extracted have not to be only vertical or horizontal edges, it can
-be an arch, a blob, a  blank space etc.
+<br/> on that pretext its also called a feature extractor. Feature to be extracted have not to be only vertical or horizontal edges, it can
+<br/> be an arch, a blob, a  blank space etc.
 
 __**Channels :**__
 <br/> Channels are the outcome of images convolved with a definite kernel. each Channel contains only a specific feature i.e. a channel is a collection of same/similar features. For example, after convoluting an image with different kernals one at a time we will get as many channels and lets say one channel will have all the vertical 
