@@ -2,21 +2,26 @@
 
 ### 1. What are Channels and Kernels (according to EVA)? ###
 ***ANS :***
-**Kernel** are the matrix of odd no size (usually 3X3) which is convolved with the image to extract certain features. 
+**Kernel** are the matrix of odd no size but w.r.t EVA its 3X3, which is convolved with the image to extract certain features. 
 <br/>The values of the kernel and the symmetry is responsible for a particular type of feature. 
 for example, the below 3X3 kernel can be used to produce a horizontal edge.
 |-1|-1 |-1|
 |:---:|:---:|:---:|
 | 0 |0 |0 |
 | 1 | 1 |1 |
+<br/> Output of the convolution of an image with a kernal is a channel, containing only a specific feature. As it extracts features,
+on that pretext its also called a feature extractor. Feature to be extracted have not to be only vertical or horizontal edges, it can
+be an arch, a blob, a  blank space etc.
 
 __**Channels :**__
-<br/> Channels are the outcome of images convolved with a definite kernel. each Channel consist different features. for example, in the below Image we can see that it is a Image with different Alphabets present in it.
+<br/> Channels are the outcome of images convolved with a definite kernel. each Channel contains only a specific feature i.e. a channel is a collection of same/similar features. For example, after convoluting an image with different kernals one at a time we will get as many channels and lets say one channel will have all the vertical 
+edges present in image while other can have all the horizontal edges and similarly one specific feature contained in other channels.
+<br/> In a more general context, in the below Image we can see that it is a Image with different Alphabets present in it.
 <p align ="center">
   <img widht= 200, height = 200 src="Resources/Alphabet.PNG">			  
 </p>
 
-now in this image we can consider each alphabet as a feature. So each alphabet information can be stored in one channel. hence this image can be represented in 52 channels each representing a feature of small and capital letter in it.
+now in this image we can consider each alphabet as a feature. So each alphabet information can be stored in one channel. hence this image can be represented in 52 channels each representing a feature of small and capital letter in it. So we can think of our image as a set of different channels.
 
 ### 2. Why should we (nearly) always use 3x3 kernels? ###
 ***ANS :*** 
@@ -29,8 +34,11 @@ below are the reasons for mostly using 3X3 kernel
 <p align ="center">
   <img  src="Resources/Kernel.png">			  
 </p>
-
-3. In recent time there are hardware’s which are accelerated for 3X3 kernel operations. 
+3. Number of multiplication operations while convolution using 3X3 kernal to replicate the effect of a bigger size kernal is lesser in comparision to bigger kernals.
+<br/> If image size is 1004X1004, Continuing on the example shown in point 2
+<br/> Number of Multiplication operations while using 5X5 kernal -> 1000 * 1000 * 25 -> 25000000 operations.
+<br/> Number of Multiplication operations while using 3X3 kernal -> 1002 * 1002 * 9 + 1000 * 1000 * 9 -> 18036036 operations.
+4. In recent time there are hardware’s which are accelerated for 3X3 kernel operations. 
 
 
 ### 3. How many times to we need to perform 3x3 convolutions operations to reach close to 1x1 from 199x199 (type each layer output like 199x199 > 197x197...) ###
@@ -41,7 +49,7 @@ below are the reasons for mostly using 3X3 kernel
 
 ### 4. How are kernels initialized? ###
 ***ANS :***
-Initial weights of the kernel can be initialized in number of ways even with 0’s, 1’s or even random values, though it is better to use more complex methods  like Xavier and MSRA initializations whose values may seem random or arbitrary but they help in faster convergence of the network. 
+Initial weights of the kernel can be initialized using random values, though it is better to use more complex methods  like Xavier and MSRA initializations whose values may seem random or arbitrary but they help in faster convergence of the network. 
 So if your model doesnt converge, you might want to look at your initialization strategies.
 
 ### 5.What happens during the training of a DNN? ###
