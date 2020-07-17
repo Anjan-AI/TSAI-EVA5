@@ -39,6 +39,7 @@ below are the reasons for mostly using 3X3 kernel
 <br/> If image size is 1004X1004, Continuing on the example shown in point 2
 <br/> Number of Multiplication operations while using 5X5 kernal -> 1000 * 1000 * 25 -> 25000000 operations.
 <br/> Number of Multiplication operations while using 3X3 kernal -> 1002 * 1002 * 9 + 1000 * 1000 * 9 -> 18036036 operations.
+
 4. In recent time there are hardware’s which are accelerated for 3X3 kernel operations. 
 
 
