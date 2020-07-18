@@ -70,4 +70,5 @@ This change is proportional to the learning rate (we set) and also the position 
 1. Anjan Kumar Patra
 2. Pradipt Trivedi
 3. Ram Kumar
-4.Avnish 
+4. Avnish 
+
