@@ -65,3 +65,9 @@ This change is proportional to the learning rate (we set) and also the position 
 <p align ="center">
   <img widht= 400, height = 400 src="Resources/errorback.png">			  
 </p>
+
+### Authors :###
+1. Anjan Kumar Patra
+2. Pradipt Trivedi
+3. Ram Kumar
+4.Avnish 
