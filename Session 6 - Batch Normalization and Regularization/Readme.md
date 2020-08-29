@@ -1,4 +1,4 @@
-# EVA5 - Session 6 Session 6 - Batch Normalization and Regularization #
+# EVA5 - Session 6 - Batch Normalization and Regularization #
 
 The goal of this assignment is to apply L1 and L2 regularization with Ghost Batch Normalization (GBN) on the final model from the previous session and plot the changes in validation loss and accuracy obtained during model training in the following scenarios:
 1. Without L1 and L2 regularization
