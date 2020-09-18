@@ -2,7 +2,7 @@
 """
 Created on Wed Sep 16 14:33:42 2020
 
-@author: 20115260
+@author: Anjan 
 """
 import torch
 import os
