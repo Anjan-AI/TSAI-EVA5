@@ -1,10 +1,12 @@
-# EVA5 - WEEK 8 Assignment #
+# EVA5 - WEEK 9 Assignment #
 
 ## Assignment: ##
-1. Go through this repository: https://github.com/kuangliu/pytorch-cifar
-2. Extract the ResNet18 model from this repository and add it to your API/repo. 
-3. Use your data loader, model loading, train, and test code to train ResNet18 on Cifar10
-4. Your Target is 85% accuracy. No limit on the number of epochs. Use default ResNet18 code (so params are fixed). 
+1. Move your last code's transformations to Albumentations. Apply ToTensor, HorizontalFlip, Normalize (at min) + More (for additional points)
+2. Please make sure that your test_transforms are simple and only using ToTensor and Normalize
+3. Implement GradCam function as a module. 
+4. Your final code (notebook file) must use imported functions to implement transformations and GradCam functionality
+5. Target Accuracy is 87%
+6. Submit answers to S9-Assignment-Solution. 
 
 ## Below are the Training Details  ##
 ### Parameters and Hyperparameters ###
@@ -15,14 +17,16 @@
 5. LR Gamma: 0.1
 6. Batch Size: 64
 7. num_workers = 4 
-8. Epochs: 55
-9. Data Augmentation
+8. Epochs: 33
+9. Data Augmentation (horizontal_flip_prob=0.6,vertical_flip_prob=0.6,rotate_degree =30.0,cutout)
 
 ### The following data augmentation techniques were applied to the dataset during training: ###
-Random Rotation: 15 degrees
+Random Rotation: 30 degrees
 Random Horizontal Flip
+verticle Flip
 
-### the accurcay of 85% was reached in the 48th Epoch. ###
+
+### the accurcay of 87% was reached in the 37th  Epoch. ###
 
 ### Submitted By  ###
 1. Avnish Midha 
