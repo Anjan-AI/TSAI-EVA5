@@ -21,15 +21,8 @@ from torch.optim.lr_scheduler import StepLR
 
 classes = cifar10_classes()
 
-train_transform = AlbumentationTransforms(augmentation = True, mean=(0.4914, 0.4822, 0.4465) ,
-                                          std_dev =(0.2471, 0.2435, 0.2616),
-                                          horizontal_flip_prob=0.6,
-                                          vertical_flip_prob=0.6,
-                                          rotate_degree =30.0,
-                                          HueSaturationValue = 0.6,
-                                          cutout= True)
-
-test_transform = AlbumentationTransforms(augmentation = True, mean=(0.4914, 0.4822, 0.4465) ,std_dev =(0.2471, 0.2435, 0.2616))
+train_transform = AlbumentationTransforms(augmentation = True, mean=(0.4914, 0.4822, 0.4465) ,std_dev =(0.2471, 0.2435, 0.2616),rotate_degree =12.0,cutout= True)
+test_transform = AlbumentationTransforms()
 
 Data = Dataset(train_transform,test_transform)
 
@@ -51,7 +44,7 @@ show_train_data(train_loader, classes)
 model = ResNet18()
 print_model_summary(model, input_size = (3,32,32),device =device)
 
-EPOCHS = 1
+EPOCHS = 3
 train_losses = []
 test_losses = []
 train_acc = []
