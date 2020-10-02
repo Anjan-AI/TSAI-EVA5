@@ -33,7 +33,7 @@ class AlbumentationTransforms:
             if HueSaturationValue > 0:  # Rotate image
                 transforms_list += [A.HueSaturationValue(p=0.3)]
             if cutout:
-                transforms_list += [A.Cutout(num_holes=1, max_h_size=16,max_w_size = 16,p=1,fill_value=mean)]
+                transforms_list += [A.Cutout(num_holes=1, max_h_size=16,max_w_size = 16,p=1)]
                         
         transforms_list += [
                      A.Normalize((mean), (std_dev)),
