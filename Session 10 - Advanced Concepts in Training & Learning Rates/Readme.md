@@ -32,12 +32,12 @@ Best Test Accuracy : 88.55%
 
 ### below is the LR finder curve
 <p align ="center">
-  <img width= 100, height = 100 src="Resources/LR_finder.png">			  
+  <img width= 500, height = 500 src="Resources/LR_finder.png">			  
 </p>
 
 ### below is the results of Gradcam of misclassified images for last 2 layers of the netowrk 
 <p align ="center">
-  <img width= 700, height = 1000 src="Resources/LR_finder.png">			  
+  <img width= 700, height = 1000 src="Resources/Gradcam.png">			  
 </p>
 
 
