@@ -17,9 +17,6 @@ class GradCAM:
         logit: model output
     A simple example:
         # initialize a model, model_dict and gradcam
-        resnet = torchvision.models.resnet101(pretrained=True)
-        resnet.eval()
-        gradcam = GradCAM.from_config(model_type='resnet', arch=resnet, layer_name='layer4')
         # get an image and normalize with mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)
         img = load_img()
         normed_img = normalizer(img)
@@ -46,13 +43,8 @@ class GradCAM:
         self.target_layer.register_forward_hook(forward_hook)
         self.target_layer.register_backward_hook(backward_hook)
 
-    @classmethod
-    def from_config(cls, arch: torch.nn.Module, model_type: str, layer_name: str):
-        target_layer = layer_finders[model_type](arch, layer_name)
-        return cls(arch, target_layer)
-
     def saliency_map_size(self, *input_size):
-        device = next(self.model_arch.parameters()).device
+        device = next(self.model.parameters()).device
         self.model(torch.zeros(1, 3, *input_size, device=device))
         return self.activations['value'].shape[2:]
 
@@ -89,6 +81,9 @@ class GradCAM:
 
 
 
+
+# ------------------------------------VISUALIZE_GRADCAM-------------------------------------------------------------
+
 import cv2
 def visualize_cam(mask, img, alpha=1.0):
     """Make heatmap from mask and synthesize GradCAM result image using heatmap and img.
@@ -109,3 +104,32 @@ def visualize_cam(mask, img, alpha=1.0):
     result = result.div(result.max()).squeeze()
 
     return heatmap, result
+
+#-------------------------------------------GradCam View (Initialisation)--------------------------------------------
+
+from torchvision.utils import make_grid, save_image
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def GradCamView(miscalssified_images,model,classes,layers,Figsize = (23,30),subplotx1 = 9, subplotx2 = 3):
+
+    fig = plt.figure(figsize=Figsize)
+    for i,k in enumerate(miscalssified_images):
+        images1 = [miscalssified_images[i][0].cpu()/2+0.5]
+        images2 =  [miscalssified_images[i][0].cpu()/2+0.5]
+        for j in layers:
+                g = GradCAM(model,j)
+                mask, _= g(miscalssified_images[i][0].clone().unsqueeze_(0))
+                heatmap, result = visualize_cam(mask,miscalssified_images[i][0].clone().unsqueeze_(0)/2+0.5 )
+                images1.extend([heatmap])
+                images2.extend([result])
+        # Ploting the images one by one
+        grid_image = make_grid(images1+images2,nrow=len(layers)+1,pad_value=1)
+        npimg = grid_image.numpy()
+        sub = fig.add_subplot(subplotx1, subplotx2, i+1) 
+        plt.imshow(np.transpose(npimg, (1, 2, 0)))
+        sub.set_title('P = '+classes[int(miscalssified_images[i][1])]+" A = "+classes[int(miscalssified_images[i][2])],fontweight="bold",fontsize=18)
+        sub.axis("off")
+        plt.tight_layout()
+        fig.subplots_adjust(wspace=0)
