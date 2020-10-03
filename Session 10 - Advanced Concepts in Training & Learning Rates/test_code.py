@@ -21,6 +21,8 @@ from Training.Training_Testing import train ,test,runmodel
 import torch.optim as optim
 from torch.optim.lr_scheduler import StepLR
 
+from Utils.lr_finder import LRFinder
+
 classes = cifar10_classes()
 
 train_transform = AlbumentationTransforms(augmentation = True, mean=(0.4914, 0.4822, 0.4465) ,std_dev =(0.2471, 0.2435, 0.2616),rotate_degree =12.0,cutout= True)
@@ -46,6 +48,9 @@ show_train_data(train_loader, classes)
 model = ResNet18()
 print_model_summary(model, input_size = (3,32,32),device =device)
 
+
+
+
 EPOCHS = 3
 train_losses = []
 test_losses = []
@@ -54,8 +59,15 @@ test_acc = []
 
 
 criterion = cross_entropy_loss()  # Create loss function
-optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
-scheduler = StepLR(optimizer, step_size=6, gamma=0.1) 
+optimizer = optim.SGD(model.parameters(), lr=0.0001, momentum=0.9)
+#scheduler = StepLR(optimizer, step_size=6, gamma=0.1) 
+lr_finder = LRFinder(model, optimizer, criterion, device="cuda")
+lr_finder.range_test(train_loader, val_loader=test_loader, end_lr=10, num_iter=5 ,step_mode="exp")
+
+lr_finder.plot()
+
+
+
 train_losses = []
 test_losses = []
 train_acc = []
