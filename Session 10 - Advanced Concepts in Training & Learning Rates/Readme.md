@@ -27,17 +27,23 @@ Random Horizontal Flip
 verticle Flip
 
 ### Traing and test Accuracy 
-Best Training Accuracy : 89.46%
-Best Test Accuracy : 88.55%
+Best Training Accuracy : 91.61%
+Best Test Accuracy : 89.42%
 
 ### below is the LR finder curve
 <p align ="center">
-  <img width= 500, height = 500 src="Resources/LR_finder.png">			  
+  <img width= 500, height = 500 src="Resources/LR_1.png">			  
 </p>
 
 ### below is the results of Gradcam of misclassified images for last 2 layers of the netowrk 
 <p align ="center">
-  <img width= 700, height = 1000 src="Resources/Gradcam.png">			  
+  <img width= 700, height = 1000 src="Resources/gradcam_1.png">			  
+</p>
+
+
+### below is Training and validation ( test)  accuracy curve
+<p align ="center">
+  <img width= 500, height = 500 src="Resources/accuracy.png">			  
 </p>
 
 

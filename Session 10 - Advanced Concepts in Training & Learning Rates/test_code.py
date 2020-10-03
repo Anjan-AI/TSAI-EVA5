@@ -17,7 +17,7 @@ from Utils.GradCam import GradCamView
 from Utils.show_image import imshow ,show_train_data
 from models.resnet import ResNet18
 from Training.Training_Testing import train ,test,runmodel
-
+from Utils.plot import plot_metric
 import torch.optim as optim
 from torch.optim.lr_scheduler import StepLR
 
