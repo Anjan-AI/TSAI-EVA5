@@ -86,4 +86,4 @@ def runmodel(model,device,trainloader,testloader,optimizer,scheduler,EPOCHS,crit
       train(model, device,optimizer, trainloader,criterion, train_losses,train_acc)
       
       test(model, device, testloader,criterion,test_losses,test_acc)
-      scheduler.step()
+      scheduler.step(test_losses[-1])
