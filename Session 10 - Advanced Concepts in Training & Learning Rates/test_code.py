@@ -12,7 +12,7 @@ from Dataset.dataset import Dataset,cifar10_classes
 from Dataset.image_augmentations import AlbumentationTransforms
 from Utils.SetCuda import set_seed,initialize_cuda
 from Utils.utilities import print_model_summary,cross_entropy_loss
-from Utils.evaluate import show_misclassified_images,evaluate_classwise_accuracy
+from Utils.evaluate import show_misclassified_images,evaluate_classwise_accuracy,plot_misclassified_images
 from Utils.GradCam import GradCamView
 from Utils.show_image import imshow ,show_train_data
 from models.resnet import ResNet18
