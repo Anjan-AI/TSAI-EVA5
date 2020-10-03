@@ -37,8 +37,8 @@ def show_misclassified_images(model, device, dataset, classes,no_images):
         
   plt.tight_layout()
   
-  
-  def evaluate_classwise_accuracy(model, device, test_loader,classes):
+
+def evaluate_classwise_accuracy(model, device, test_loader,classes):
     class_correct = list(0. for i in range(10))
     class_total = list(0. for i in range(10))
     with torch.no_grad():
