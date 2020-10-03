@@ -61,7 +61,7 @@ test_acc = []
 criterion = cross_entropy_loss()  # Create loss function
 optimizer = optim.SGD(model.parameters(), lr=0.0001, momentum=0.9)
 #scheduler = StepLR(optimizer, step_size=6, gamma=0.1) 
-lr_finder = LRFinder(model, optimizer, criterion, device="cuda")
+lr_finder = LRFinder(model, optimizer, criterion, device=device)
 lr_finder.range_test(train_loader, val_loader=test_loader, end_lr=10, num_iter=5 ,step_mode="exp")
 
 lr_finder.plot()
