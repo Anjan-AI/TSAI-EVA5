@@ -79,6 +79,7 @@ class NewResnet(nn.Module):
         maxpool = self.pool(layer3)
         x = maxpool.view(maxpool.size(0),-1)
         fc = self.fc(x)
+        x = fc.view(-1, 10)
 
-        return F.log_softmax(fc.view(-1,10), dim=-1)
+        return x
       
