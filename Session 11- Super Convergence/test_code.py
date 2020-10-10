@@ -25,7 +25,7 @@ from torch.optim.lr_scheduler import StepLR
 
 from Utils.lr_finder import LRFinder
 import albumentations as A
-
+from Utils.LRtest import LR_test
 classes = cifar10_classes()
 
 channel_means = (0.4914, 0.4822, 0.4465)
