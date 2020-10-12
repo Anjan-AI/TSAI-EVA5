@@ -86,7 +86,7 @@ def runmodel(model,device,trainloader,testloader,optimizer,scheduler,EPOCHS,crit
       print("EPOCH:", epoch)
       if(batch_scheduler):
         train_scheduler = scheduler
-      train(model, device,optimizer, trainloader,criterion, train_losses,train_acc,l1_factor,train_scheduler)
+      train(model, device,optimizer, trainloader,criterion, train_losses,train_acc,l1_factor= l1_factor,scheduler= train_scheduler)
       
       test(model, device, testloader,criterion,test_losses,test_acc)
       if(not batch_scheduler): 
