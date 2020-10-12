@@ -9,7 +9,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-def train(model, device,optimizer, train_loader,criterion, train_losses, train_acc,l1_factor=0):
+def train(model, device,optimizer, train_loader,criterion, train_losses, train_acc,l1_factor=0,scheduler = False):
   model.train()
   pbar = tqdm(train_loader)
   correct = 0
@@ -40,7 +40,8 @@ def train(model, device,optimizer, train_loader,criterion, train_losses, train_a
     # Backpropagation
     loss.backward()
     optimizer.step()
-    
+    if(scheduler):
+      scheduler.step()
     
         # Update pbar-tqdm
     
@@ -77,13 +78,17 @@ def test(model, device, test_loader,testloss,test_losses,test_acc):
     
     test_acc.append(100. * correct / len(test_loader.dataset))
 
-
-def runmodel(model,device,trainloader,testloader,optimizer,scheduler,EPOCHS,criterion, train_losses,train_acc,test_losses,test_acc,l1_factor=0):
+train_scheduler = False
+def runmodel(model,device,trainloader,testloader,optimizer,scheduler,EPOCHS,criterion, train_losses,train_acc,test_losses,test_acc,l1_factor=0,batch_scheduler = False):
   #optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
   #scheduler = StepLR(optimizer, step_size=6, gamma=0.1)    
   for epoch in range(EPOCHS):
       print("EPOCH:", epoch)
-      train(model, device,optimizer, trainloader,criterion, train_losses,train_acc)
+      if(batch_scheduler):
+        train_scheduler = scheduler
+      train(model, device,optimizer, trainloader,criterion, train_losses,train_acc,train_scheduler)
       
       test(model, device, testloader,criterion,test_losses,test_acc)
-      scheduler.step(test_losses[-1])
+      if(not batch_scheduler): 
+        scheduler.step(test_losses[-1])
+      
