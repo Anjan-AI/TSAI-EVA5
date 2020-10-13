@@ -1,1 +1,1 @@
-Use the ipynb notebook to run on colab will help in downloading images.
+Use the downloadImages notebook to run on colab, to download images.
