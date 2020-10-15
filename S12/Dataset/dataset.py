@@ -50,6 +50,7 @@ class GetTinyImageNet:
 		self.test_transforms = test_transforms
 
 		data = TinyImageNet()
+		self.classes = data.classes
 		data_len = len(data)
 		split_pt = int(data_len*split)
 		self.train_set, self.test_set = torch.utils.data.random_split(data, [split_pt, data_len-split_pt])
@@ -59,25 +60,6 @@ class GetTinyImageNet:
 			return SubSet(self.train_set, transform=self.train_transforms)
 		else:
 			return SubSet(self.test_set, transform=self.train_transforms)
-
-	def data_loader(self, dataset, cuda=False, batch_size=128, num_workers=4):
-
-		# dataloader arguments - something you'll fetch these from cmdprmt
-		dataloader_args = dict(shuffle=True, batch_size=batch_size, num_workers=num_workers,
-							   pin_memory=True) if cuda else dict(shuffle=True, batch_size=64)
-
-		# train dataloader
-		self.dataset_loader = torch.utils.data.DataLoader(
-			dataset, **dataloader_args)
-
-		return self.dataset_loader
-
-	def download_cifar10dataset(self, train=False):
-
-		if train:
-			return torchvision.datasets.CIFAR10(root='./data', train=train, download=True, transform=self.train_transforms)
-		else:
-			return torchvision.datasets.CIFAR10(root='./data', train=train, download=True, transform=self.test_transforms)
 
 	def data_loader(self, dataset, cuda=False, batch_size=128, num_workers=4):
 
@@ -121,7 +103,7 @@ class TinyImageNet(torch.utils.data.Dataset):
 				self.target.append(self.classes.index(wclass))
 
 		with open(self.path+'/val/val_annotations.txt','r') as f:
-			for line in tqdm(f, desc='Loading Validation Data...', unit='images/s'):
+			for line in tqdm(f, desc='Loading Validation Data...', unit='images/s', total=10000):
 				line = line.strip()
 				img_file, img_class = line.split('\t')[:2]
 				img = np.asarray(Image.open(f'{self.path}/val/images/{img_file}'))
