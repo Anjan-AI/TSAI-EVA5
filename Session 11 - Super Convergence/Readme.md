@@ -2,23 +2,23 @@
 
 ## Assignment: ##
 1. Write a code whichuses this new ResNet Architecture (Used in Dawn Bench) for Cifar10:
-	PrepLayer - Conv 3x3 s1, p1) >> BN >> RELU [64k]
-	Layer1 -
-		X = Conv 3x3 (s1, p1) >> MaxPool2D >> BN >> RELU [128k]
-		R1 = ResBlock( (Conv-BN-ReLU-Conv-BN-ReLU))(X) [128k] 
-	Add(X, R1)
-	Layer 2 -
-		Conv 3x3 [256k]
-		MaxPooling2D
-		BN
-		ReLU
-	Layer 3 -
-		X = Conv 3x3 (s1, p1) >> MaxPool2D >> BN >> RELU [512k]
-		R2 = ResBlock( (Conv-BN-ReLU-Conv-BN-ReLU))(X) [512k]
-		Add(X, R2)
-	MaxPooling with Kernel Size 4
-	FC Layer 
-	SoftMax 
+<br/>	PrepLayer - Conv 3x3 s1, p1) >> BN >> RELU [64k]
+<br/>	Layer1 -
+<br />		X = Conv 3x3 (s1, p1) >> MaxPool2D >> BN >> RELU [128k]
+<br />		R1 = ResBlock( (Conv-BN-ReLU-Conv-BN-ReLU))(X) [128k] 
+<br/>	    Add(X, R1)
+<br/>	Layer 2 -
+<br/>		Conv 3x3 [256k]
+<br/>		MaxPooling2D
+<br/>		BN
+<br/>		ReLU
+<br/>	Layer 3 -
+<br/>		X = Conv 3x3 (s1, p1) >> MaxPool2D >> BN >> RELU [512k]
+<br/>		R2 = ResBlock( (Conv-BN-ReLU-Conv-BN-ReLU))(X) [512k]
+<br/>		Add(X, R2)
+<br/>	MaxPooling with Kernel Size 4
+<br/>	FC Layer 
+<br/>	SoftMax 
 
 2. Uses One Cycle Policy such that:
 	Total Epochs = 24
