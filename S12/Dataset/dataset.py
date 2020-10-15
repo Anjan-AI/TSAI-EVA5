@@ -3,7 +3,7 @@ import torchvision
 import os
 import requests
 import zipfile
-from tqdm import tqdm
+from tqdm.notebook import tqdm
 from io import BytesIO
 import glob
 from PIL import Image
@@ -22,6 +22,55 @@ class Dataset:
 
 		self.train_transforms = train_transforms
 		self.test_transforms = test_transforms
+
+	def download_cifar10dataset(self, train=False):
+
+		if train:
+			return torchvision.datasets.CIFAR10(root='./data', train=train, download=True, transform=self.train_transforms)
+		else:
+			return torchvision.datasets.CIFAR10(root='./data', train=train, download=True, transform=self.test_transforms)
+
+	def data_loader(self, dataset, cuda=False, batch_size=128, num_workers=4):
+
+		# dataloader arguments - something you'll fetch these from cmdprmt
+		dataloader_args = dict(shuffle=True, batch_size=batch_size, num_workers=num_workers,
+							   pin_memory=True) if cuda else dict(shuffle=True, batch_size=64)
+
+		# train dataloader
+		self.dataset_loader = torch.utils.data.DataLoader(
+			dataset, **dataloader_args)
+
+		return self.dataset_loader
+
+class GetTinyImageNet:
+
+	def __init__(self, train_transforms, test_transforms, split=0.7):
+
+		self.train_transforms = train_transforms
+		self.test_transforms = test_transforms
+
+		data = TinyImageNet()
+		data_len = len(data)
+		split_pt = int(data_len*split)
+		self.train_set, self.test_set = torch.utils.data.random_split(data, [split_pt, data_len-split_pt])
+		# long winded import for there is already a class called Dataset
+	def get_dataset(self, train=False):
+		if train:
+			return SubSet(self.train_set, transform=self.train_transforms)
+		else:
+			return SubSet(self.test_set, transform=self.train_transforms)
+
+	def data_loader(self, dataset, cuda=False, batch_size=128, num_workers=4):
+
+		# dataloader arguments - something you'll fetch these from cmdprmt
+		dataloader_args = dict(shuffle=True, batch_size=batch_size, num_workers=num_workers,
+							   pin_memory=True) if cuda else dict(shuffle=True, batch_size=64)
+
+		# train dataloader
+		self.dataset_loader = torch.utils.data.DataLoader(
+			dataset, **dataloader_args)
+
+		return self.dataset_loader
 
 	def download_cifar10dataset(self, train=False):
 
@@ -72,7 +121,7 @@ class TinyImageNet(torch.utils.data.Dataset):
 				self.target.append(self.classes.index(wclass))
 
 		with open(self.path+'/val/val_annotations.txt','r') as f:
-			for line in tqdm(f, desc='Loading Validation Data...'):
+			for line in tqdm(f, desc='Loading Validation Data...', unit='images/s'):
 				line = line.strip()
 				img_file, img_class = line.split('\t')[:2]
 				img = np.asarray(Image.open(f'{self.path}/val/images/{img_file}'))
@@ -105,3 +154,16 @@ class TinyImageNet(torch.utils.data.Dataset):
 		else:
 			print(f'Got status code {r.status_code} for url {self.url} ')
 
+class SubSet(torch.utils.data.Dataset):
+	def __init__(self, dataset, transform=None):
+		self.dataset = dataset
+		self.transform = transform
+
+	def __getitem__(self, idx):
+		img, target = self.dataset[idx]
+		if self.transform:
+			img = self.transform(img)
+		return img, target
+
+	def __len__(self):
+		return len(self.dataset)
