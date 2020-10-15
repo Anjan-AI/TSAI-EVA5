@@ -59,7 +59,7 @@ class TinyImageNet(torch.utils.data.Dataset):
 			self.download_dataset()
 		print('TinyImageNet Downloaded')
 
-		with open (self.path+'/winds.txt','r') as f:
+		with open (self.path+'/wnids.txt','r') as f:
 			wnids = [l.strip() for l in f]
 		print(f'Found {len(wnids)} classes')
 
