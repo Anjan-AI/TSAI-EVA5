@@ -62,7 +62,7 @@ class TinyImageNet(torch.utils.data.Dataset):
 		with open (self.path+'/wnids.txt','r') as f:
 			wnids = [l.strip() for l in f]
 		print(f'Found {len(wnids)} classes')
-
+		self.classes = wnids
 		for wclass in tqdm(wnids, desc='Loading Training Data...'):
 			for file in glob.glob(f'{self.path}/train/{wclass}/images/*.JPEG'):
 				img = Image.open(file)
@@ -104,3 +104,6 @@ class TinyImageNet(torch.utils.data.Dataset):
 			zip_.close()
 		else:
 			print(f'Got status code {r.status_code} for url {self.url} ')
+
+
+data = TinyImageNet()
