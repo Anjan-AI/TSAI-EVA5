@@ -75,7 +75,7 @@ class TinyImageNet(torch.utils.data.Dataset):
 			for line in tqdm(f, desc='Loading Validation Data...'):
 				line = line.strip()
 				img_file, img_class = line.split('\t')[:2]
-				img = np.asarray(Image.open(f'{self.path}/val/{img_file}'))
+				img = np.asarray(Image.open(f'{self.path}/val/images/{img_file}'))
 				self.data.append(img)
 				self.target.append(self.classes.index(img_class))
 		
@@ -105,5 +105,3 @@ class TinyImageNet(torch.utils.data.Dataset):
 		else:
 			print(f'Got status code {r.status_code} for url {self.url} ')
 
-
-data = TinyImageNet()
