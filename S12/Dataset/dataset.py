@@ -48,7 +48,7 @@ class TinyImageNet(torch.utils.data.Dataset):
 	"""Tiny Imagenet from cs231n
 	"""
 
-	def __init__(self, url='http://cs231n.stanford.edu/tiny-imagenet-200.zip',path='./tiny-imagenet-200/'):
+	def __init__(self, url='http://cs231n.stanford.edu/tiny-imagenet-200.zip',path='./tiny-imagenet-200'):
 		self.path = path
 		self.url = url
 		self.classes = []
@@ -60,10 +60,10 @@ class TinyImageNet(torch.utils.data.Dataset):
 		print('TinyImageNet Downloaded')
 
 		with open (self.path+'/winds.txt','r') as f:
-			winds = [l.strip() for l in f]
-		print(f'Found {len(winds)} classes')
+			wnids = [l.strip() for l in f]
+		print(f'Found {len(wnids)} classes')
 
-		for wclass in tqdm(winds, desc='Loading Training Data...'):
+		for wclass in tqdm(wnids, desc='Loading Training Data...'):
 			for file in glob.glob(f'{self.path}/train/{wclass}/images/*.JPEG'):
 				img = Image.open(file)
 				img = np.asarray(img)
