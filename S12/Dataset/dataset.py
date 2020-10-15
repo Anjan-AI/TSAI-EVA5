@@ -5,7 +5,9 @@ import requests
 import zipfile
 from tqdm import tqdm
 from io import BytesIO
-
+import glob
+from PIL import Image
+import numpy as np
 
 def cifar10_classes():
 	return (
@@ -41,16 +43,51 @@ class Dataset:
 		return self.dataset_loader
 
 
-class TinyImageNet:
+class TinyImageNet(torch.utils.data.Dataset):
 
 	"""Tiny Imagenet from cs231n
 	"""
 
-	def __init__(self,url='http://cs231n.stanford.edu/tiny-imagenet-200.zip',path='./tiny-imagenet-200/'):
-		self. path = path
+	def __init__(self, url='http://cs231n.stanford.edu/tiny-imagenet-200.zip',path='./tiny-imagenet-200/'):
+		self.path = path
 		self.url = url
+		self.classes = []
+		self.data = []
+		self.target = []
+
 		if not os.path.isdir(self.path):
 			self.download_dataset()
+		print('TinyImageNet Downloaded')
+
+		with open (self.path+'/winds.txt','r') as f:
+			winds = [l.strip() for l in f]
+		print(f'Found {len(winds)} classes')
+
+		for wclass in tqdm(winds, desc='Loading Training Data...'):
+			for file in glob.glob(f'{self.path}/train/{wclass}/images/*.JPEG'):
+				img = Image.open(file)
+				img = np.asarray(img)
+				self.data.append(img)
+				# To get labels as simple numbers from 0 to len(classes)-1
+				self.target.append(self.classes.index(wclass))
+
+		with open(self.path+'/val/val_annotations.txt','r') as f:
+			for line in tqdm(f, desc='Loading Validation Data...'):
+				line = line.strip()
+				img_file, img_class = line.split('\t')[:2]
+				img = np.asarray(Image.open(f'{self.path}/val/{img_file}'))
+				self.data.append(img)
+				self.target.append(self.classes.index(img_class))
+		
+
+	def  __len__(self):
+		return len(self.data)
+
+	def __getitem__(self, idx):
+		#idx is index
+		img = self.data[idx]
+		target = self.target[idx]
+		return img, target
 
 	def download_dataset(self):
 		print('Downloading TinyImageNet')
