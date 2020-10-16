@@ -41,12 +41,11 @@ def imshow1(img, title):
     
     
 
-def show_train_data_imagenet(dataset, classes, n_rows):
+def show_train_data_imagenet(data_loader, classes, n_rows):
     # get some random training images
     dataiter = iter(dataset)
     images, labels = dataiter.next()
     labels = [classes[label] for label in labels]
     for i in range(n_rows):
         title = '    '.join(labels[i*5:i*5+5])
-        imshow1(torchvision.utils.make_grid(images[i*5:i*5+5],nrow=5,padding=2,scale_each=True), title)
-    
+        imshow1(torchvision.utils.make_grid(images[i*5:i*5+5],nrow=5,padding=2,scale_each=True), title)    
