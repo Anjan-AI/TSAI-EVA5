@@ -99,7 +99,8 @@ class TinyImageNet(torch.utils.data.Dataset):
 				img = Image.open(file)
 				img = np.asarray(img)
 				if(len(img.shape) ==2):
-					img = np.repeat(img[:, :, np.newaxis], 3, axis=2)				
+					img = np.repeat(img[:, :, np.newaxis], 3, axis=2)
+				img = np.moveaxis(img, 0, -1)				
 				self.data.append(img)
 				# To get labels as simple numbers from 0 to len(classes)-1
 				self.target.append(self.classes.index(wclass))
@@ -112,6 +113,7 @@ class TinyImageNet(torch.utils.data.Dataset):
 				img = np.asarray(img)
 				if(len(img.shape) ==2):
 					img = np.repeat(img[:, :, np.newaxis], 3, axis=2)
+				img = np.moveaxis(img, 0, -1)
 				self.data.append(img)
 				self.target.append(self.classes.index(img_class))
 		
