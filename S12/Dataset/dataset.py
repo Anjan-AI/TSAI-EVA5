@@ -98,6 +98,8 @@ class TinyImageNet(torch.utils.data.Dataset):
 			for file in glob.glob(f'{self.path}/train/{wclass}/images/*.JPEG'):
 				img = Image.open(file)
 				img = np.asarray(img)
+				if(len(img.shape) ==2):
+					img = np.repeat(img[:, :, np.newaxis], 3, axis=2)
 				self.data.append(img)
 				# To get labels as simple numbers from 0 to len(classes)-1
 				self.target.append(self.classes.index(wclass))
@@ -106,7 +108,10 @@ class TinyImageNet(torch.utils.data.Dataset):
 			for line in tqdm(f, desc='Loading Validation Data...', unit='images/s', total=10000):
 				line = line.strip()
 				img_file, img_class = line.split('\t')[:2]
-				img = np.asarray(Image.open(f'{self.path}/val/images/{img_file}'))
+				img = Image.open(f'{self.path}/val/images/{img_file}')
+				if(len(img.shape) ==2):
+					img = np.repeat(img[:, :, np.newaxis], 3, axis=2)
+				img = np.asarray(img)
 				self.data.append(img)
 				self.target.append(self.classes.index(img_class))
 		
