@@ -43,7 +43,7 @@ def imshow1(img, title):
 
 def show_train_data_imagenet(data_loader, classes, n_rows):
     # get some random training images
-    dataiter = iter(dataset)
+    dataiter = iter(data_loader)
     images, labels = dataiter.next()
     labels = [classes[label] for label in labels]
     for i in range(n_rows):
