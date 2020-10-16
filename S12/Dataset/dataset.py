@@ -97,9 +97,9 @@ class TinyImageNet(torch.utils.data.Dataset):
 		for wclass in tqdm(wnids, desc='Loading Training Data...'):
 			for file in glob.glob(f'{self.path}/train/{wclass}/images/*.JPEG'):
 				img = Image.open(file)
-				img = np.asarray(img)
 				if(len(img.shape) ==2):
-					img = np.repeat(img[:, :, np.newaxis], 3, axis=2)
+					img = np.repeat(img[:, :, np.newaxis], 3, axis=2)				
+				img = np.asarray(img)
 				self.data.append(img)
 				# To get labels as simple numbers from 0 to len(classes)-1
 				self.target.append(self.classes.index(wclass))
