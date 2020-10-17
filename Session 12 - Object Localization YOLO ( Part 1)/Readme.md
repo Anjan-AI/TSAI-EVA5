@@ -1,51 +1,79 @@
-# EVA5 - WEEK 10 Assignment #
+# EVA5 - WEEK 12 Assignment ( YOLO part-1) #
 
-## Assignment: ##
-Implement the below in the Week 9 code 
-1. Implement LR Finder to find best LR
-2. Implement ReduceLROnPlateau
-3. Use SGD with mometum
-4. Train For 50 epochs
-5. Target accuracy is 88%
-6. Run GradCAM on the any 25 misclassified images 
+# Assignment A: #
+1.Download this TINY IMAGENET dataset. 
+2.Train ResNet18 on this dataset (70/30 split) for 50 Epochs. Target 50%+ Validation Accuracy. 
 
-## Below are the Training Details  ##
-### Parameters and Hyperparameters ###
+### Below are the Training Details  ###
+ Parameters and Hyperparameters 
 1. Loss Function: Cross Entropy Loss 
 2. Optimizer: SGD
-3. Learning Rate: 0.003612342699709432 ( using LR finder)
+3. Batch Size: 256
+4. num_workers = 8 
 4. momentum=0.9
-5. ReduceLROnPlateau : patience = 5
-6. Batch Size: 64
-7. num_workers = 4 
-8. Epochs: 50
-9. Data Augmentation (horizontal_flip_prob=0.6,vertical_flip_prob=0.6,rotate_degree =30.0,cutout)
+5. useed LR finder suggested LR is 0.06 . Baed on exp kept the max LR at 0.01
+6. Best LR found  = 0.019866510851419033
+7. Epochs: 25
+9. Data Augmentation : PadIfNeeded,RandomCrop,Rotation,HorizontalFlip,RGBShift,Cutout 
+10.Used OneCycleLR from pytorch API as the scheduler .
+11. max_lr = 0.01
+12. div_factor=25, final_div_factor=1
 
-### The following data augmentation techniques were applied to the dataset during training: ###
-Random Rotation: 30 degrees
-Random Horizontal Flip
-verticle Flip
 
 ### Traing and test Accuracy 
-Best Training Accuracy : 91.61%
-Best Test Accuracy : 89.42%
+Best Training Accuracy : 91.25%
+Best Test Accuracy : 88.35%
+
 
 ### below is the LR finder curve
 <p align ="center">
-  <img width= 500, height = 500 src="Resources/LR_1.png">			  
-</p>
-
-### below is the results of Gradcam of misclassified images for last 2 layers of the netowrk 
-<p align ="center">
-  <img width= 700, height = 1000 src="Resources/gradcam_1.png">			  
+  <img width= 500, height = 500 src="Resources/LR_Finder.png">			  
 </p>
 
 
 ### below is Training and validation ( test)  accuracy curve
 <p align ="center">
-  <img width= 500, height = 500 src="Resources/accuracy.png">			  
+  <img width= 500, height = 500 src="Resources/Accuracy.png">			  
 </p>
 
+# Assignment B: #
+
+1. Download 50 (min) images each of people wearing hardhat, vest, mask and boots. 
+2. Use these labels (same spelling and small letters):
+<br/> hardhat
+<br/> vest
+<br/> mask
+<br/> boots
+3. Use VGG annotator Tool to  annotate bounding boxes around the hardhat, vest, mask and boots.
+4. Download JSON file. 
+5. Describe the contents of this JSON file in FULL details (you don't need to describe all 10 instances, anyone would work). 
+6. Write ocde to find the best no of anchor points (K) for the dataset using elbow method and IOU method.
+
+
+## Visualisation of data ##
+<p align ="center">
+  <img width= 500, height = 500 src="Resources/Data.png">			  
+</p>
+
+## Elbow method to find out K ##
+<p align ="center">
+  <img width= 500, height = 500 src="Resources/elbow_method.png">			  
+</p>
+
+## IOU method to find out K ##
+<p align ="center">
+  <img width= 500, height = 500 src="Resources/IOU_method.png">			  
+</p>
+
+## K means with k = 5 ##
+<p align ="center">
+  <img width= 500, height = 500 src="Resources/k_5.png">			  
+</p>
+
+## K means with k = 6 ##
+<p align ="center">
+  <img width= 500, height = 500 src="Resources/k_6.png">			  
+</p>
 
 ### Submitted By  ###
 1. Avnish Midha 
