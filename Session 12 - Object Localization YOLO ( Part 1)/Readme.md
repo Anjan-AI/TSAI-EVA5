@@ -12,17 +12,16 @@
 4. num_workers = 8 
 4. momentum=0.9
 5. useed LR finder suggested LR is 0.06 . Baed on exp kept the max LR at 0.01
-6. Best LR found  = 0.019866510851419033
-7. Epochs: 25
-9. Data Augmentation : PadIfNeeded,RandomCrop,Rotation,HorizontalFlip,RGBShift,Cutout 
-10.Used OneCycleLR from pytorch API as the scheduler .
-11. max_lr = 0.01
-12. div_factor=25, final_div_factor=1
+6. Epochs: 25
+7. Data Augmentation : PadIfNeeded,RandomCrop,Rotation,HorizontalFlip,RGBShift,Cutout 
+8. Used OneCycleLR from pytorch API as the scheduler .
+9. max_lr = 0.01
+10. div_factor=10, final_div_factor=10
 
 
 ### Traing and test Accuracy 
-Best Training Accuracy : 91.25%
-Best Test Accuracy : 88.35%
+Best Training Accuracy : 67.86%
+Best Test Accuracy : 50.97%
 
 
 ### below is the LR finder curve
