@@ -353,6 +353,7 @@ def train():
             # Save best checkpoint
             if (best_fitness == fi) and not final_epoch:
                 torch.save(chkpt, best)
+                torch.save(chkpt, '/content/drive/My Drive/saved_checkpoints/best.pt')
 
             # Save backup every 10 epochs (optional)
             # if epoch > 0 and epoch % 10 == 0:
