@@ -18,7 +18,7 @@ https://github.com/Anjan-AI/TSAI-EVA5/tree/master/S13/opencv_yolo
 https://github.com/Anjan-AI/TSAI-EVA5/blob/master/S13/opencv_yolo/Avnish/with_clock_output.png
 
 
-### Below is a sample inferred image ###
+### Below the annotated image ###
 <p align ="center">
   <img width= 500, height = 500 src="Avnish/with_clock_output.png">			  
 </p>
