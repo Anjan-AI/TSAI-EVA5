@@ -8,9 +8,14 @@ Run this image through the code above.
 Upload the link to GitHub implementation of this
 Upload the annotated image by YOLO. 
 
+
+Yolo Coco Dataset Weights used: https://drive.google.com/file/d/1jVuQrUVI-PtTQOUoCCMdNunP5-orayrt/view?usp=sharing
+
 ### Github link  ###
+https://github.com/Anjan-AI/TSAI-EVA5/tree/master/S13/opencv_yolo
 
 ### Annotated Image by Yolo ###
+https://github.com/Anjan-AI/TSAI-EVA5/blob/master/S13/opencv_yolo/Avnish/with_clock_output.png
 
 
 
