@@ -349,7 +349,8 @@ def train():
 
             # Save last checkpoint
             torch.save(chkpt, last)
-
+            torch.save(chkpt, '/content/drive/My Drive/saved_checkpoints/last.pt')
+            
             # Save best checkpoint
             if (best_fitness == fi) and not final_epoch:
                 torch.save(chkpt, best)
