@@ -31,7 +31,7 @@ Notebook: https://github.com/Anjan-AI/TSAI-EVA5/blob/master/S13/YoloV3_SafetyWea
 
 # Assignment Part 4: Run the custom model on Images derived from a Video & Create a Video showing detection of the trained subjects #
 
-Steps to process the video for Yolo V3 detection:
+Steps to process the video for Yolo V3 detection & upload on Social media:
 1. Download a sample youtube video using the mentioned tool: https://www.y2mate.com/
 2. Cut the video to the duration needed, using an online tool like: https://www.onlineconverter.com/
 3. Generate images from the video using ffmpeg command: ffmpeg -i video.mp4 image-%03d.jpg
