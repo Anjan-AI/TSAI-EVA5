@@ -18,11 +18,11 @@ https://github.com/Anjan-AI/TSAI-EVA5/tree/master/S13/opencv_yolo
 https://github.com/Anjan-AI/TSAI-EVA5/blob/master/S13/opencv_yolo/Avnish/with_clock_output.png
 
 <p align ="center">
-  <img width= 432, height = 288 src="/opencv_yolo/Avnish/with_clock_output.png">			  
+  <img width= 432, height = 288 src="opencv_yolo/Avnish/with_clock_output.png">			  
 </p>
 
 <p align ="center">
-  <img width= 432, height = 288 src="/opencv_yolo/Anjan/Anjan.jpg">			  
+  <img width= 432, height = 288 src="opencv_yolo/Anjan/Anjan.jpg">			  
 </p>
 
 
