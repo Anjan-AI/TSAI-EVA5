@@ -70,7 +70,8 @@ Sample Linkedin link: https://www.linkedin.com/posts/avnish-midha-a734772_covid1
 
 
 ### Submitted By  ###
-1. Avnish Midha 
-2. Ramkumar M 
-3. Pradipt Trivedi 
-4. Anjan Kumar Patra
+1. Anjan Kumar Patra
+2. Avnish Midha 
+3. Ramkumar M 
+4. Pradipt Trivedi 
+
