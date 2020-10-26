@@ -25,6 +25,9 @@ https://github.com/Anjan-AI/TSAI-EVA5/blob/master/S13/opencv_yolo/Avnish/with_cl
   <img width= 432, height = 288 src="opencv_yolo/Anjan/Anjan.jpg">			  
 </p>
 
+<p align ="center">
+  <img width= 432, height = 288 src="opencv_yolo/Ram/yolov3_opencv_test.png">			  
+</p>
 
 # Assignment Part 2: Annotate Images using YoloV3 Annotation Tool #
 Share your NEWLY annotated (same as 12, but annotated using new tool) images with Zoheb by Wednesday at midnight. Take the set back for training on Thursday.
