@@ -23,6 +23,11 @@ https://github.com/Anjan-AI/TSAI-EVA5/blob/master/S13/opencv_yolo/Avnish/with_cl
   <img width= 500, height = 500 src="Avnish/with_clock_output.png">			  
 </p>
 
+<p align ="center">
+  <img width= 500, height = 500 src="Anjan/Anjan.jpg">			  
+</p>
+
+
 
 ### Submitted By  ###
 1. Avnish Midha 

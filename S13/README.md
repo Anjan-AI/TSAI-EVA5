@@ -18,9 +18,12 @@ https://github.com/Anjan-AI/TSAI-EVA5/tree/master/S13/opencv_yolo
 https://github.com/Anjan-AI/TSAI-EVA5/blob/master/S13/opencv_yolo/Avnish/with_clock_output.png
 
 <p align ="center">
-  <img width= 432, height = 288 src="Avnish/with_clock_output.png">			  
+  <img width= 432, height = 288 src="/opencv_yolo/Avnish/with_clock_output.png">			  
 </p>
 
+<p align ="center">
+  <img width= 432, height = 288 src="/opencv_yolo/Anjan/Anjan.jpg">			  
+</p>
 
 
 # Assignment Part 2: Annotate Images using YoloV3 Annotation Tool #
@@ -59,7 +62,7 @@ Sample Linkedin link: https://www.linkedin.com/posts/avnish-midha-a734772_covid1
 
 ### Below is a sample inferred image ###
 <p align ="center">
-  <img width= 1920, height = 1080 src="Resources/Sample_Inference.jpeg">			  
+  <img width= 640, height = 480 src="Resources/Sample_Inference.jpeg">			  
 </p>
 
 
