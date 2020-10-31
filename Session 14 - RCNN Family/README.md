@@ -18,7 +18,7 @@ https://drive.google.com/drive/folders/1_Fuz23akKdzqQnRGnbY4zDI9Yerjw918
 total no of Images used for GT : 3475
 ### Below is folder structure ###
 <p align ="center">
-  <img width= 600, height = 150 src="Resources/Folder_structure.JPG">			  
+  <img width= 800, height = 150 src="Resources/Folder_structure.JPG">			  
 </p>
 
 ### the folder details are as below ###
