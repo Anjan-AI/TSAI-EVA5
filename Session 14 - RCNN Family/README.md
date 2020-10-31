@@ -33,8 +33,15 @@ total no of Images used for GT : 3475
 ## week 14 Assignment ( optional) ## 
 
 1. Run this ( https://colab.research.google.com/drive/16jcaJoc6bCFAQ96jDe2HwtXj7BMD_-m5?usp=sharing )  on your own video. 
+2. uplaod the video in youtube
+
 
 the processed video is uploaded in the Resources folder with name S_14_output.mp4
+
+### the youtube link to the video is ###
+
+https://www.youtube.com/watch?v=cLRluIvShqc&feature=youtu.be
+
 
 
 ### Submitted By  ###
